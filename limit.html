@@ -11,7 +11,14 @@
         MathJax = {
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                packages: ['base', 'ams'],
+                font: 'Asap Math', // Specify the new font here
+                scale: 25, // Adjust the scale (default is 100)
+            },
+            chtml: {
+                scale: 0.5, // Reduce the size of math (85% of normal size)
+                fontURL: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2', // Optional: link to font folder if needed
             }
         };
     </script>
@@ -95,8 +102,13 @@
         }
 
         .multicol-list {
-            column-count: 2; /* Number of columns */
-            column-gap: 20px; /* Space between columns */
+            -webkit-column-count: 2; /* Safari and Chrome */
+            -moz-column-count: 2; /* Firefox */
+            column-count: 2; /* Standard syntax */
+            -webkit-column-gap: 20px; /* Safari and Chrome */
+            -moz-column-gap: 20px; /* Firefox */
+            column-gap: 20px; /* Standard syntax */
+            padding: 0;
         }
 
         .multicol-list li {

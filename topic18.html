@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complex Number</title>
+    <link href="https://fonts.googleapis.com/css2?family=Suwannaphum:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                packages: ['base', 'ams'],
+                font: 'Asap Math', // Specify the new font here
+                scale: 50, // Adjust the scale (default is 100)
+            },
+            chtml: {
+                scale: 0.6, // Reduce the size of math (85% of normal size)
+                fontURL: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2', // Optional: link to font folder if needed
+            }
+        };
+    </script>
+
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Suwannaphum', sans-serif;
+            line-height: 1.6;
+            background-color: #808080; /* Gray background */
+            color: #333;
+        }
+
+        /* Navigation bar styles */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+        }
+
+        .navbar a:hover {
+            background-color: #555;
+        }
+
+        /* Centered text styles */
+        .center-text {
+            text-align: center;
+            font-size: 24px; /* Custom font size */
+            margin-top: 20px;
+            margin-bottom: 20px;
+            color: #ffffff; /* Text color */
+        }
+
+        /* Main content styles */
+        .container {
+            width: 80%;
+            margin: 10px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .row {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            color: #0000ff; 
+        }
+
+        /* Footer styles */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .multicol-list {
+            -webkit-column-count: 2; /* Safari and Chrome */
+            -moz-column-count: 2; /* Firefox */
+            column-count: 2; /* Standard syntax */
+            -webkit-column-gap: 20px; /* Safari and Chrome */
+            -moz-column-gap: 20px; /* Firefox */
+            column-gap: 20px; /* Standard syntax */
+            padding: 0;
+        }
+
+        .multicol-list li {
+            list-style-type: disc;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="center-text">
+        វិញ្ញាសាគណិតវិទ្យា(១៨)
+    </div>
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">I. (១៥ពិន្ទុ) គណនាលីមីតខាងក្រោម៖
+            
+                <p>ក. $\lim\limits_ {x \to 1} \frac{x-1}{2(x^2-1)}$ </p>
+                <p>ខ.​ $\lim\limits_ {x\to +\infty} \frac{x^2+x+1}{2x^2-x+1}$ </p>
+                <p>គ. $\lim\limits_ {x\to 1} \frac{1-\sqrt{x}}{x-1}$</p>
+        </div>
+        <div class="row">II. (១០ពិន្ទុ)  គណនាអាំងតេក្រាល 
+            <p>ក. $\int_0^1 (2-3x+x^2)dx$ </p>
+            <p>ខ. $\int_0^2 \left(2x- \frac{1}{x+e}\right) dx$</p>
+            <p>គ. $\int_{-1}^0 \left(2-\frac{1}{(x-1)^2}\right)dx$</p>
+        </div>
+        <div class="row">III. (១០ពិន្ទុ)នៅក្នុងថង់មួយមានប៊ូល១០ដែលក្នុងនោះមានប៊ូល៥មានពណ៌លឿង ហើយសរសេរពី១ដក់៥ ប៊ូល៣មានពណ៌ក្រហមហើយសរសេរលេខពី១ដល់៣និងប៊ូល២មានពណ៌សហើយសរសេរលេខពី១ដល់២។គេចាប់យកប៊ូលមួយ ចេញពីថង់ដោយចៃដន្យ។រកប្រូបាបនៃព្រឹត្តិការណ៍ខាងក្រោម៖
+           <p> A:	ប៊ូលដែលចាប់បានមានពណ៌លឿង។</p> 
+            <p>B:	ប៊ូលដែលចាប់បានមានលេខ២។</p>
+            <p>C:	ប៊ូលដែលចាប់បានមានលេខខ២និងពណ៌ក្រហម។ </p>
+            
+        </div>
+        <div class="row"> IV> (១០ពិន្ទុ) គេមានសមីការ $25{{x}^{2}}+9{{y}^{2}}-225=0$
+            <p>ក.	បង្ហាញថាសមីការនេះជាសមីការអេលីប។រកប្រវែងអ័ក្សតូច អ័ក្សធំ កូអរដោនេនៃកំពូលទាំងពីរនិង
+                កូអរដោនេកំណុំទាំងពីររបស់អេលីប។</p>
+            <p>ខ.	សង់អេលីបនេះ។</p>
+            
+        </div>
+        <div class="row">
+            V.	(៣០ពិន្ទុ)   គេមានអនុគមន៍ $f$ កំណត់$D=\mathbb{R}-\left\{ -1 \right\}$ដោយ $f(x)=\frac{{{x}^{2}}+2x-2}{x+1}$ មានក្រាបតំណាង $(C)$
+            <P>ក.	រកដែនកំណត់នៃអនុគមន៍ $f$ ។</P>
+                <p>ខ.	បង្ហាញថា $f(x)=x+1-\frac{3}{x+1}$ ។</p>
+                <p>គ.	ចូររកសមីការអាស៊ីមតូតឈរ និងអាស៊ីមតូតទ្រេតនៃក្រាប $(C)$ ។</p>
+                <p>ឃ.	សិក្សាអថេរភាពនិងសង់ក្រាប $(C)$ នៃអនុគមន៍ $f$ ។</p>
+
+        </div>
+        
+        
+    </div>
+</body>
+</html>

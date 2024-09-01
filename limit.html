@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>limit of function</title>
+    <title>Complex Number</title>
     <link href="https://fonts.googleapis.com/css2?family=Suwannaphum:wght@100;300;400;700;900&display=swap" rel="stylesheet">
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>
@@ -14,10 +14,10 @@
                 displayMath: [['$$', '$$'], ['\\[', '\\]']],
                 packages: ['base', 'ams'],
                 font: 'Asap Math', // Specify the new font here
-                scale: 25, // Adjust the scale (default is 100)
+                scale: 50, // Adjust the scale (default is 100)
             },
             chtml: {
-                scale: 0.5, // Reduce the size of math (85% of normal size)
+                scale: 0.6, // Reduce the size of math (85% of normal size)
                 fontURL: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2', // Optional: link to font folder if needed
             }
         };
@@ -115,75 +115,27 @@
             list-style-type: disc;
             margin-bottom: 5px;
         }
+		/* Style the iframe container */
+        .pdf-container {
+            width: 100%;
+            max-width: 800px; /* Maximum width for the frame */
+            margin: 0 auto; /* Center the iframe */
+            border: 1px solid #ddd; /* Optional border */
+        }
+
+        iframe {
+            width: 100%;
+            height: 800px; /* Adjust height as needed */
+            border: none; /* Remove default border */
+        }
     </style>
 </head>
 <body>
-    <div class="center-text">
-        លីមិតនៃអនុគមន៍
-    </div>
+    
     <!-- Main Content -->
-    <div class="container">
-        <div class="row">១. ដើម្បីគណនាលីមីតរាងមិនកំណត់ $\frac{0}{0}$ យើងត្រូវ៖
-            <ul class="multicol-list">
-                <li>បំបែកភាគយកនឹងភាគបែងជាផលគុណកត្តាសូន្យ។</li>
-                <li>សម្រួលកត្តាសូន្យចោល រួចគណនាកន្សោមលីមីតថ្មី។</li>
-            </ul>
-        </div>
-        <div class="row">២. ដើម្បីគណនាលីមីតរាងមិនកំណត់ $\frac{\infty}{\infty}$ គេត្រូវដាក់តួដែលមានដឺក្រេធំជាងគេជាកត្តាទាំងភាគយកនឹងភាគបែងរួមសិនហើយសម្រួល 
-        រួចគណនាលីមីតនៃកន្សោមថ្មី។
-        </div>
-        <div class="row">៣. ដើម្បីគណនាលីមីតរាងមិនកំណត់ $+\infty-\infty$ គេត្រូវដាក់តួដែលមានដឺក្រេធំជាងគេជាកត្តារួមហើយគណនាលីមីតថ្មី 
-        (ករណីទាក់ទងនឹងឬសការេ ជួនកាលត្រូវគុណនឹងកន្សោមឆ្លាស់សិន)។
-        </div>
-        <div class="row"> ៤. រូបមន្តគួរចងចាំ
-            <ul class="multicol-list"> 
-                <li>$a^{2}-b^{2}=(a-b)(a+b)$</li>
-                <li>$a^{3}-b^{3}=(a-b)\left(a^{2}+a b+b^{2}\right)$</li>
-                <li>$a^{3}+b^{3}=(a+b)\left(a^{2}-a b+b^{2}\right)$</li>
-                <li>$a^{4}-b^{4}=(a-b)\left(a^{3}+a^{2} b+a b^{2}+b^{3}\right)$</li>
-                <li>$a^{n}-1=(a-1)\left(a^{n-1}+a^{n-2}+\ldots+1\right)$</li>
-                <li>$a^{n}+1=(a+1)\left(a^{n-1}-a^{n-2}+\ldots-a+1\right)$</li>
-                <li>$a^{n}-b^{n}=(a-b)(\underbrace{a^{n-1}+a^{n-2} b+\ldots \ldots .+b^{n-2} a+b^{n-1}}_{n \text {តួ}})$</li>
-                <li>$a^{n}+b^{n}=(a+b)(\underbrace{a^{n-1}-a^{n-2} b+\ldots -b^{n-2} a+b^{n-1}}_{n \text {តួ}})$</li>
-            </ul>
-        </div>
-        <div class="row">
-            លីមីតនៃអនុគមន៍ត្រីកោណមាត្រ 
-            <ul class="multicol-list"> 
-                <li>$\lim\limits _{x \rightarrow 0} \frac{\sin a x}{a x}=1$</li>
-                <li>$\lim\limits _{x \rightarrow 0} \frac{a x}{\sin a x}=1$</li>
-                <li>$\lim\limits _{x \rightarrow 0} \frac{1-\cos x}{x}=0$</li>
-                <li>$\lim\limits _{x \rightarrow 0} \frac{\tan a x}{a x}=1$</li>
-                <li>$\lim\limits _{x \rightarrow 0} \frac{a x}{\tan a x}=1$</li>
-                <li>$\lim\limits _{x \rightarrow 0} \frac{1-\cos a x}{x}=0$</li>
-            </ul>
-        </div>
-        <div class="row">
-            លីមីតនៃអនុគមន៍អុិចស្ប៉ូណង់ស្យែល 
-            <ul class="multicol-list"> 
-                <li>$\lim\limits_{x \rightarrow 0} \frac{e^{a x}-1}{a x}=1$</li>
-                <li> $\lim\limits_{x \rightarrow 0} \frac{e^{x}-1}{x}=1$</li>
-                <li>$\lim\limits_{x \rightarrow-\infty} e^{x}=0$</li>
-                <li>$\lim\limits_{x \rightarrow+\infty} e^{x}=+\infty$</li>
-                <li>$\lim\limits_{x \rightarrow+\infty} \frac{x}{e^{x}}=0$</li>
-                <li>$\lim\limits_{x \rightarrow+\infty} \frac{x^{n}}{e^{x}}=0$</li>
-                <li>$\lim\limits_{x \rightarrow+\infty} \frac{e^{x}}{x}=+\infty$</li>
-                <li>$\lim\limits_{x \rightarrow+\infty} \frac{e^{x}}{x^{n}}=+\infty$</li>
-            </ul>
-        </div>
-        <div class="row">
-            លីមីតនៃអនុគមន៍លោការីត 
-            <ul class="multicol-list"> 
-                <li>$\lim\limits _{x \rightarrow+\infty} \frac{\ln x}{x}=0$</li>
-                <li>$\lim\limits _{x \rightarrow+\infty} \frac{\ln x}{x^{n}}=0$</li>
-                <li>$\lim\limits _{x \rightarrow+\infty} \frac{x}{\ln x}=+\infty$</li>
-                <li>$\lim\limits _{x \rightarrow x^{+}} \ln x=-\infty$</li>
-                <li>$\lim\limits _{x \rightarrow ០^{+}} x^{n} \ln x=0$</li>
-                <li>$\lim\limits _{x \rightarrow+\infty} \frac{x^{n}}{\ln x}=-\infty$</li>
-                <li>$\lim\limits _{x \rightarrow \pm \infty}\left(1+\frac{1}{x}\right)^{x}=e$</li>
-                <li>$\lim\limits _{x \rightarrow 0} \frac{\ln (x+1)}{x}=1$</li>
-            </ul>
-        </div>
-    </div>
+  
+        <div class="pdf-container">
+        <iframe src="https://drive.google.com/file/d/1OKECFAZMWlGH-lgfNoNmp3gM6hG-innJ/preview"></iframe>
+
 </body>
 </html>

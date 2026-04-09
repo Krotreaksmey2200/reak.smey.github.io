@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>វិញ្ញសារសថ្នាក់វិទ្យាសាស្រ្ត - Science Class Certificate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Suwannaphum:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/modern.css">
+    <style>
+        .topic-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .lesson-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .lesson-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 1.2rem 1.4rem;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .lesson-row:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .lesson-row .lesson-number {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            background: rgba(102, 126, 234, 0.14);
+            color: #2f47c8;
+            font-weight: 800;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .lesson-info {
+            flex: 1;
+            margin-left: 1rem;
+            min-width: 0;
+        }
+
+        .lesson-title {
+            margin: 0;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #24325c;
+        }
+
+        .lesson-link {
+            color: #4f6ef7;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .lesson-link:hover {
+            text-decoration: underline;
+        }
+
+        .lesson-progress-stats {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            padding: 1.8rem;
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+            margin-top: 1rem;
+        }
+
+        .lesson-progress-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .lesson-progress-info {
+            color: #333;
+            font-weight: 700;
+        }
+
+        .lesson-progress-bar {
+            width: 100%;
+            height: 14px;
+            background: rgba(102, 126, 234, 0.12);
+            border-radius: 999px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .lesson-progress-fill {
+            width: 12.5%;
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 999px;
+            transition: width 0.5s ease;
+            position: relative;
+        }
+
+        .lesson-status-indicator {
+            min-width: 120px;
+            text-align: center;
+            padding: 0.55rem 1rem;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .lesson-status-indicator.loading {
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+        }
+
+        .lesson-status-indicator.completed {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+        }
+
+        .topic-row {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: rowSlideIn 0.6s ease forwards;
+        }
+
+        .topic-row:nth-child(1) { animation-delay: 0.1s; }
+        .topic-row:nth-child(2) { animation-delay: 0.2s; }
+        .topic-row:nth-child(3) { animation-delay: 0.3s; }
+        .topic-row:nth-child(4) { animation-delay: 0.4s; }
+        .topic-row:nth-child(5) { animation-delay: 0.5s; }
+        .topic-row:nth-child(6) { animation-delay: 0.6s; }
+        .topic-row:nth-child(7) { animation-delay: 0.7s; }
+        .topic-row:nth-child(8) { animation-delay: 0.8s; }
+
+        @keyframes rowSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .topic-row:hover {
+            transform: translateX(5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .topic-row::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 0 2px 2px 0;
+        }
+
+        .topic-content-row {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .topic-number-row {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+            min-width: 50px;
+            text-align: center;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .topic-info {
+            flex: 1;
+        }
+
+        .topic-title-row {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .topic-title-row::before {
+            content: '📚';
+            font-size: 1.2rem;
+            animation: bookFloat 3s ease-in-out infinite;
+        }
+
+        .topic-description-row {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .topic-status-indicator {
+            min-width: 120px;
+            text-align: center;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .topic-status-indicator::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .topic-status-indicator:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .topic-status-indicator.loading {
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            color: white;
+            animation: pulseLoading 2s infinite;
+        }
+
+        .topic-status-indicator.completed {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            animation: completedGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseLoading {
+            0% { box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 152, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 152, 0, 0); }
+        }
+
+        @keyframes completedGlow {
+            0% { box-shadow: 0 0 20px rgba(76, 175, 80, 0.5); }
+            100% { box-shadow: 0 0 30px rgba(76, 175, 80, 0.8); }
+        }
+
+        .topic-title {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .topic-title::before {
+            content: '📚';
+            font-size: 1.2rem;
+            animation: bookFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes bookFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-5px) rotate(2deg); }
+        }
+
+        @keyframes cardEntrance {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9) rotateX(10deg);
+            }
+            50% {
+                opacity: 0.7;
+                transform: translateY(10px) scale(0.97) rotateX(2deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1) rotateX(0deg);
+            }
+        }
+
+        .topic-row.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .topic-row.loading {
+            pointer-events: none;
+        }
+
+        .topic-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 1.4rem 1.5rem;
+            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .topic-row:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 45px rgba(0, 0, 0, 0.12);
+        }
+
+        .topic-row.completed {
+            border-color: #4CAF50;
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.08), rgba(76, 175, 80, 0.02));
+        }
+
+        .topic-row.completed::after {
+            content: '✓';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #4CAF50;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 10px rgba(76, 175, 80, 0.3);
+        }
+
+        .topic-row.not-started {
+            border-color: #ff9800;
+            background: linear-gradient(135deg, rgba(255, 152, 0, 0.12), rgba(255, 152, 0, 0.04));
+        }
+
+        .topic-row.not-started::after {
+            content: '○';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #ff9800;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 10px rgba(255, 152, 0, 0.25);
+        }
+
+        .topic-grid {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .topic-content-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        .topic-number-row {
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(102, 126, 234, 0.12);
+            color: #2e49c8;
+            font-size: 1.3rem;
+            font-weight: 800;
+            border-radius: 16px;
+            flex-shrink: 0;
+        }
+
+        .topic-info {
+            min-width: 0;
+        }
+
+        .topic-title-row {
+            font-size: 1.2rem;
+            margin: 0;
+            color: #1c2a5a;
+            font-weight: 700;
+        }
+
+        .topic-description-row {
+            margin: 0.35rem 0 0;
+            color: #5c5c69;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .topic-status-indicator {
+            min-width: 125px;
+            text-align: center;
+            border-radius: 999px;
+            padding: 0.65rem 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+            flex-shrink: 0;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 152, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 152, 0, 0); }
+        }
+
+        @keyframes completedGlow {
+            0% { box-shadow: 0 0 20px rgba(76, 175, 80, 0.5); }
+            100% { box-shadow: 0 0 30px rgba(76, 175, 80, 0.8); }
+        }
+
+        .progress-stats {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: statsSlideIn 1s ease-out;
+        }
+
+        .progress-stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.05), transparent);
+            animation: statsShimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes statsSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes statsShimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 20px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: progressShine 2s ease-in-out infinite;
+        }
+
+        @keyframes progressShine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .progress-text {
+            font-size: 1.1rem;
+            color: #667eea;
+            font-weight: 600;
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 10px rgba(102, 126, 234, 0.3); }
+            100% { text-shadow: 0 0 20px rgba(102, 126, 234, 0.6); }
+        }
+
+        /* Floating decorative elements */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 20%;
+            right: 15%;
+            animation-delay: 5s;
+        }
+
+        .floating-element:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 10s;
+        }
+
+        .floating-element:nth-child(4) {
+            bottom: 10%;
+            right: 10%;
+            animation-delay: 15s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.1;
+            }
+            25% {
+                transform: translateY(-20px) rotate(90deg);
+                opacity: 0.15;
+            }
+            50% {
+                transform: translateY(-40px) rotate(180deg);
+                opacity: 0.1;
+            }
+            75% {
+                transform: translateY(-20px) rotate(270deg);
+                opacity: 0.15;
+            }
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 900;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin: 2rem 0;
+            animation: titleSlideIn 1.5s ease-out;
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes titleSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.8);
+                filter: blur(10px);
+            }
+            50% {
+                opacity: 0.7;
+                transform: translateY(-10px) scale(0.95);
+                filter: blur(5px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        .welcome-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            animation: welcomeFadeIn 1s ease-out 0.5s both;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .welcome-section h2 {
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .welcome-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+            animation: lineGrow 1s ease-out 1s both;
+        }
+
+        @keyframes welcomeFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes lineGrow {
+            0% { width: 0; }
+            100% { width: 100px; }
+        }
+
+        .loading-spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(102, 126, 234, 0.1);
+            border-left: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+
+        .topic-row.loading .loading-spinner {
+            display: block;
+        }
+
+        .topic-row.loading .topic-content-row {
+            opacity: 0.3;
+        }
+
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .topic-row.completed .progress-bar {
+            width: 100%;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .load-all-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 2rem auto;
+            display: block;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .load-all-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .load-all-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .status-message {
+            text-align: center;
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 10px;
+            font-weight: 500;
+            display: none;
+        }
+
+        .status-message.loading {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .status-message.completed {
+            background: rgba(76, 175, 80, 0.1);
+            color: #4CAF50;
+            border: 1px solid rgba(76, 175, 80, 0.2);
+        }
+
+        .topic-row::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .topic-row:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .topic-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #667eea;
+            opacity: 0.1;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+
+        .topic-title {
+            color: #667eea;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .topic-description {
+            color: #666;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .welcome-section {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .welcome-section h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .welcome-section p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .topic-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-section {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome-section {
+                padding: 2rem;
+            }
+
+            .welcome-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-element">📚</div>
+        <div class="floating-element">🌍</div>
+        <div class="floating-element">🎓</div>
+        <div class="floating-element">📖</div>
+    </div>
+    <header>
+        <nav class="navbar">
+            <div class="logo">វេបសាយរៀនគណិតវិទ្យា</div>
+            <ul class="nav-links">
+                <li><a href="index.html">ទំព័រដើម</a></li>
+                <li><a href="topic_SC.html">វិទ្យាសាស្រ្ត</a></li>
+                <li><a href="topic_SS_2026.html">សង្គមសិក្សា</a></li>
+                <li><a href="mathg7.html">គណិតវិទ្យាថ្នាក់ទី៧</a></li>
+                <li><a href="mearean.html">អំពីខ្ញុំ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="section-title">វិញ្ញសារថ្នាក់វិទ្យាសាស្រ្ត</h1>
+
+        <div class="welcome-section">
+            <h2>សូមស្វាគមន៍មកកាន់វេទិកាសិក្សាគណិតវិទ្យា</h2>
+            <p>
+                សម្រាប់ត្រៀមប្រឡងបាក់ឌុប ឆ្នាំ ២០២៦ 🇰🇭
+            </p>
+            <p>
+                វេទិកានេះផ្តល់ជូនមេរៀនគណិតវិទ្យាថ្នាក់ទី១២ ដូចជា លីមីត, ដេរីវេ, អាំងតេក្រាល និងច្រើនទៀត ព្រមទាំងវិញ្ញាសារប្រឡងសម្រាប់អនុវត្តពិត។
+            </p>
+            <p>
+                ចាប់ផ្តើមរៀនថ្ងៃនេះ ដើម្បីត្រៀមខ្លួនឲ្យបានជោគជ័យក្នុងការប្រឡង!
+            </p>
+        </div>
+
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-number">40</div>
+                <div class="stat-label">ប្រធានបទដែលមាន</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2026</div>
+                <div class="stat-label">ឆ្នាំសិក្សា</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">ភាពអន្ដរកម្ម</div>
+            </div>
+        </div>
+
+        <section class="exam-section">
+            <h2 class="section-title">វិញ្ញាសារ</h2>
+            <div class="topic-grid">
+                <div class="topic-row">
+                    <div class="topic-content-row">
+                        <div class="topic-number-row">១</div>
+                        <div class="topic-info">
+                            <h3 class="topic-title-row">វិញ្ញាសាទី១</h3>
+                            <p class="topic-description-row"><a href="https://drive.google.com/file/d/1keQlF7t-4TdLlov8g_hfLKqMk-v3RsQZ/preview" target="_blank">បើកឯកសារ</a></p>
+                        </div>
+                    </div>
+                    <div class="topic-status-indicator loading">loading</div>
+                </div>
+                <div class="topic-row">
+                    <div class="topic-content-row">
+                        <div class="topic-number-row">២</div>
+                        <div class="topic-info">
+                            <h3 class="topic-title-row">វិញ្ញាសាទី២</h3>
+                            <p class="topic-description-row"><a href="https://drive.google.com/file/d/1tlPF-au0Qyz2hDj1O5J7FqzQcEl-PnOa/preview" target="_blank">បើកឯកសារ</a></p>
+                        </div>
+                    </div>
+                    <div class="topic-status-indicator loading">loading</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="lesson-section">
+            <h2 class="section-title">មេរៀនគណិតវិទ្យា</h2>
+            <div class="lesson-progress-stats">
+                <div class="lesson-progress-header">
+                    <div class="lesson-progress-info">បានបញ្ចប់ 12/13 មេរៀន</div>
+                    <div class="lesson-progress-info">ស្ថានភាព: 12 completed, 1 loading</div>
+                </div>
+                <div class="lesson-progress-bar">
+                    <div class="lesson-progress-fill" style="width: 92.3%;"></div>
+                </div>
+            </div>
+            <div class="lesson-grid">
+                <div class="lesson-row">
+                    <div class="lesson-number">១</div>
+                    <div class="lesson-info">
+                        <h3 class="lesson-title">កុំផ្លិច</h3>
+                        <a class="lesson-link" href="https://drive.google.com/file/d/1Gk0InsmsDp_I-bZLxNBwFNWxylbY8App/preview" target="_blank">មើលមេរៀន</a>
+                    </div>
+                    <div class="lesson-status-indicator completed">completed</div>
+                </div>
+                <div class="lesson-row">
+                    <div class="lesson-number">២</div>
+                    <div class="lesson-info">
+                        <h3 class="lesson-title">លីមីតនៃអនុគមន៍</h3>
+                        <a class="lesson-link" href="https://drive.google.com/file/d/1OKECFAZMWlGH-lgfNoNmp3gM6hG-innJ/view" target="_blank">មើលមេរៀន</a>
+                    </div>
+                    <div class="lesson-status-indicator completed">completed</div>
+                </div>
+                <div class="lesson-row">
+                    <div class="lesson-number">៣</div>
+                    <div class="lesson-info">
+                        <h3 class="lesson-title">ដេរីវេនៃអនុគមន៍</h3>
+                        <a class="lesson-link" href="https://drive.google.com/file/d/1SJoOaf3Ve659Zvv-cptb1hkWP8xsuMzn/preview" target="_blank">មើលមេរៀន</a>
+                    </div>
+                    <div class="lesson-status-indicator completed">completed</div>
+                </div>
+                <div class="lesson-row">
+                    <div class="lesson-number">៤</div>
+                    <div class="lesson-info">
+                        <h3 class="lesson-title">អាំងតេក្រាល</h3>
+                        <a class="lesson-link" href="https://drive.google.com/file/d/1XC57Yo1o0O9coV3K_86pVhcHugGK8i2m/view?usp=sharing" target="_blank">មើលមេរៀន</a>
+                    </div>
+                    <div class="lesson-status-indicator completed">completed</div>
+                </div>
+                <div class="lesson-row">
+                    <div class="lesson-number">៥</div>
+                    <div class="lesson-info">
+                        <h3 class="lesson-title">សិក្សាអនុគមន៍សនិទាន</h3>
+                        <a class="lesson-link" href="#">មើលមេរៀន</a>
+                    </div>
+                    <div class="lesson-status-indicator completed">completed</div>
+                </div>
+                <div class="lesson-row">
+                    <div class="lesson-number">៦</div>
+                    <div class="lesson-info">
+                        <h3 class="lesson-title">វ៉ិចទ័រក្នុងលំហ</h3>
+                        <a class="lesson-link" href="#">មើលមេរៀន</a>
+                    </div>
+                    <div class="lesson-status-indicator completed">completed</div>
+                </div>
+                <div class="lesson-row">
+                    <div class="lesson-number">៧</div>
+                    <div class="lesson-info">
+                        <h3 class="lesson-title">សមីការឌីផេរ៉ងស្យែល</h3>
+                        <a class="lesson-link" href="#">មើលមេរៀន</a>
+                    </div>
+                    <div class="lesson-status-indicator completed">completed</div>
+                </div>
+                <div class="lesson-row">
+                    <div class="lesson-number">៨</div>
+                    <div class="lesson-info">
+                        <h3 class="lesson-title">ប្រូបាប</h3>
+                        <a class="lesson-link" href="#">មើលមេរៀន</a>
+                    </div>
+                    <div class="lesson-status-indicator completed">completed</div>
+                </div>
+                <div class="lesson-row">
+                    <div class="lesson-number">៩</div>
+                    <div class="lesson-info">
+                        <h3 class="lesson-title">ប៉ារ៉ាបូល</h3>
+                        <a class="lesson-link" href="#">មើលមេរៀន</a>
+                    </div>
+                    <div class="lesson-status-indicator completed">completed</div>
+                </div>
+                <div class="lesson-row">
+                    <div class="lesson-number">១០</div>
+                    <div class="lesson-info">
+                        <h3 class="lesson-title">អេលីប</h3>
+                        <a class="lesson-link" href="#">មើលមេរៀន</a>
+                    </div>
+                    <div class="lesson-status-indicator completed">completed</div>
+                </div>
+                <div class="lesson-row">
+                    <div class="lesson-number">១១</div>
+                    <div class="lesson-info">
+                        <h3 class="lesson-title">អ៊ីពែបូល</h3>
+                        <a class="lesson-link" href="#">មើលមេរៀន</a>
+                    </div>
+                    <div class="lesson-status-indicator completed">completed</div>
+                </div>
+                <div class="lesson-row">
+                    <div class="lesson-number">១២</div>
+                    <div class="lesson-info">
+                        <h3 class="lesson-title">អនុគមន៍អ៊ិចស្ប៉ូណង់ស្យែល</h3>
+                        <a class="lesson-link" href="#">មើលមេរៀន</a>
+                    </div>
+                    <div class="lesson-status-indicator completed">completed</div>
+                </div>
+                <div class="lesson-row">
+                    <div class="lesson-number">១៣</div>
+                    <div class="lesson-info">
+                        <h3 class="lesson-title">អនុគមន៍លោការីត</h3>
+                        <a class="lesson-link" href="#">មើលមេរៀន</a>
+                    </div>
+                    <div class="lesson-status-indicator loading">loading</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="welcome-section">
+            <h2>ព័ត៌មានបន្ថែម 📚</h2>
+            <p>
+                វេទិកានេះផ្តល់មេរៀនជាច្រើន ដែលងាយស្រួលស្វែងរក និងរៀនតាមវិញ្ញាសារ។ អ្នកអាចមើលមេរៀនដោយផ្ទាល់លើ គេហទំព័រ និងត្រៀមខ្លួនបានល្អសម្រាប់ការប្រឡង។
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">ទំព័រដើម</a>
+            <a href="topic_SC.html">វិទ្យាសាស្រ្ត</a>
+            <a href="mathg7.html">គណិតវិទ្យាថ្នាក់ទី៧</a>
+            <a href="mearean.html">អំពីខ្ញុំ</a>
+        </div>
+        <p>&copy; 2026 វេបសាយរៀនគណិតវិទ្យា ដោយ Reaksmey KROT. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const topicCards = document.querySelectorAll('#topic-grid .topic-row');
+            const statusMessage = document.getElementById('status-message');
+            const completedCountEl = document.getElementById('completed-count');
+            const totalCountEl = document.getElementById('total-count');
+            const progressPercentEl = document.getElementById('progress-percent');
+            const progressFillEl = document.getElementById('progress-fill');
+
+            const STORAGE_KEY = 'social_studies_2026_progress';
+            let topicStatuses = {}; // Will store status for each topic: 'completed', 'not-started', or undefined
+
+            // Load saved progress from localStorage
+            function loadProgress() {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) {
+                    topicStatuses = JSON.parse(saved);
+                    updateUI();
+                }
+            }
+
+            // Save progress to localStorage
+            function saveProgress() {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(topicStatuses));
+            }
+
+            // Update progress statistics and UI
+            function updateUI() {
+                let completedCount = 0;
+                const total = topicCards.length;
+
+                // Update each card's state and count completed topics
+                topicCards.forEach(card => {
+                    const topicId = card.dataset.topic;
+                    const status = topicStatuses[topicId];
+                    const statusIndicator = document.getElementById(`status-${topicId}`);
+
+                    // Remove all status classes first
+                    card.classList.remove('completed', 'not-started');
+                    if (statusIndicator) {
+                        statusIndicator.classList.remove('loading', 'completed');
+                        statusIndicator.textContent = 'loading';
+                    }
+
+                    // Add appropriate status class and update indicator
+                    if (status === 'completed') {
+                        card.classList.add('completed');
+                        if (statusIndicator) {
+                            statusIndicator.classList.add('completed');
+                            statusIndicator.textContent = 'completed';
+                        }
+                        completedCount++;
+                    } else if (status === 'not-started') {
+                        card.classList.add('not-started');
+                        if (statusIndicator) {
+                            statusIndicator.classList.add('loading');
+                            statusIndicator.textContent = 'loading';
+                        }
+                    } else {
+                        // Default state - loading
+                        if (statusIndicator) {
+                            statusIndicator.classList.add('loading');
+                            statusIndicator.textContent = 'loading';
+                        }
+                    }
+                });
+
+                // Update progress display
+                const percentage = total > 0 ? Math.round((completedCount / total) * 100) : 0;
+                completedCountEl.textContent = completedCount;
+                totalCountEl.textContent = total;
+                progressPercentEl.textContent = percentage + '%';
+                progressFillEl.style.width = percentage + '%';
+            }
+
+            // Show status message
+            function showStatus(message, type) {
+                statusMessage.textContent = message;
+                statusMessage.className = `status-message ${type}`;
+                statusMessage.style.display = 'block';
+
+                if (type === 'completed') {
+                    setTimeout(() => {
+                        statusMessage.style.display = 'none';
+                    }, 3000);
+                }
+            }
+
+            // Set topic status (only allow not-started and reset for visitors)
+            window.setTopicStatus = function(topicId, status, saveToStorage = true) {
+                // Prevent visitors from marking as completed
+                if (status === 'completed') {
+                    showStatus('❌ មិនអនុញ្ញាតអោយសម្គាល់ថាបានរៀនរួចដោយខ្លួនឯង', 'loading');
+                    return;
+                }
+
+                const card = document.querySelector(`[data-topic="${topicId}"]`);
+                if (!card) return;
+
+                // Update status
+                if (status === 'reset') {
+                    delete topicStatuses[topicId];
+                } else {
+                    topicStatuses[topicId] = status;
+                }
+
+                if (saveToStorage) {
+                    saveProgress();
+                }
+
+                updateUI();
+
+                // Show appropriate message
+                const topicTitle = card.querySelector('.topic-title-row').textContent;
+                let message = '';
+                if (status === 'not-started') {
+                    message = `⏳ "${topicTitle}" ត្រូវបានសម្គាល់ថាកំពុងរៀន`;
+                } else if (status === 'reset') {
+                    message = `🔄 "${topicTitle}" ត្រូវបានកំណត់ឡើងវិញ`;
+                }
+
+                if (message) {
+                    showStatus(message, 'completed');
+                }
+            };
+
+            // Handle topic card clicks (for viewing content or loading)
+            function handleTopicClick(card) {
+                const topicId = card.dataset.topic;
+                const status = topicStatuses[topicId];
+                const topicTitle = card.querySelector('.topic-title-row').textContent;
+
+                if (status === 'completed') {
+                    showStatus(`✅ "${topicTitle}" បានរៀនរួចហើយ!`, 'completed');
+                } else if (status === 'not-started') {
+                    showStatus(`⏳ "${topicTitle}" កំពុងរៀន...`, 'loading');
+                } else {
+                    showStatus(`ចុចលើប៊ូតុង "មិនទាន់" ឬ "កំណត់ឡើងវិញ" ដើម្បីកំណត់ស្ថានភាព`, 'loading');
+                }
+            }
+
+            // Add event listeners
+            topicCards.forEach(card => {
+                // Card click (for viewing/interaction)
+                card.addEventListener('click', () => {
+                    handleTopicClick(card);
+                });
+                card.style.cursor = 'pointer';
+            });
+
+            // Initialize
+            loadProgress();
+            updateUI();
+
+            // Admin function to mark topics as completed (for site owner only)
+            // Usage: markTopicCompleted(topicId) - e.g., markTopicCompleted(1)
+            window.markTopicCompleted = function(topicId) {
+                setTopicStatus(topicId, 'completed', true);
+                console.log(`Topic ${topicId} marked as completed by admin`);
+            };
+
+            // Admin function to mark multiple topics as completed
+            // Usage: markTopicsCompleted([1, 2, 3])
+            window.markTopicsCompleted = function(topicIds) {
+                topicIds.forEach(id => markTopicCompleted(id));
+                console.log(`Topics ${topicIds.join(', ')} marked as completed by admin`);
+            };
+
+            // Show welcome message
+            setTimeout(() => {
+                showStatus('ស្វាគមន៍! អ្នកអាចចុចលើប៊ូតុង "មិនទាន់" ដើម្បីសម្គាល់ប្រធានបទដែលមិនទាន់បានរៀន ឬ "កំណត់ឡើងវិញ" ដើម្បីលុបស្ថានភាព', 'completed');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

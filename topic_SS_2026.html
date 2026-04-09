@@ -391,6 +391,25 @@
                 showStatus('ស្វាគមន៍! អ្នកអាចចុចលើប៊ូតុង "មិនទាន់" ដើម្បីសម្គាល់ប្រធានបទដែលមិនទាន់បានរៀន ឬ "កំណត់ឡើងវិញ" ដើម្បីលុបស្ថានភាព', 'completed');
             }, 1000);
         });
+
+        // Navbar hide/show on scroll functionality
+        (function() {
+            let lastScrollTop = 0;
+            const header = document.querySelector('header');
+            
+            window.addEventListener('scroll', function() {
+                let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (currentScroll > lastScrollTop) {
+                    // Scrolling DOWN
+                    header.classList.add('hidden');
+                } else {
+                    // Scrolling UP
+                    header.classList.remove('hidden');
+                }
+                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+            }, false);
+        })();
     </script>
 </body>
 </html>

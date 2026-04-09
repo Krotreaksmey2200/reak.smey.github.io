@@ -522,18 +522,18 @@ footer {
 }
 
 .lesson-row .lesson-number {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 14px;
+    border-radius: 10px;
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
-    font-weight: 800;
-    font-size: 1.1rem;
+    font-weight: 700;
+    font-size: 0.95rem;
     flex-shrink: 0;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 3px 12px rgba(102, 126, 234, 0.3);
 }
 
 .lesson-info {
@@ -684,19 +684,19 @@ footer {
 }
 
 .topic-number-row {
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: bold;
     color: white;
-    min-width: 50px;
+    min-width: 42px;
     text-align: center;
     background: linear-gradient(135deg, #667eea, #764ba2);
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 42px;
+    height: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 3px 12px rgba(102, 126, 234, 0.3);
 }
 
 .topic-info {

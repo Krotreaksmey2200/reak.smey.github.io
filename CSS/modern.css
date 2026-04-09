@@ -594,12 +594,12 @@ footer {
 }
 
 .lesson-status-indicator {
-    min-width: 120px;
+    min-width: 80px;
     text-align: center;
-    padding: 0.55rem 1rem;
+    padding: 0.4rem 0.8rem;
     border-radius: 25px;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     transition: all 0.3s ease;
@@ -719,12 +719,12 @@ footer {
 }
 
 .topic-status-indicator {
-    min-width: 120px;
+    min-width: 80px;
     text-align: center;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.75rem;
     border-radius: 25px;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     transition: all 0.3s ease;

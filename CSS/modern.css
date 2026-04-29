@@ -715,7 +715,7 @@ footer {
 }
 
 .topic-title-row::before {
-    content: '📚';
+    content: ' ';
     font-size: 1.2rem;
     animation: bookFloat 3s ease-in-out infinite;
 }
@@ -741,6 +741,7 @@ footer {
 }
 
 .topic-status-indicator::before {
+    content: '';
     position: absolute;
     top: 50%;
     left: 50%;
